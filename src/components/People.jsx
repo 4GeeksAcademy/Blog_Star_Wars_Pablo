@@ -65,8 +65,8 @@ export const People = () => {
 };
 
 
+//Falta agregar datos como color de pelo o genero
+
 //Hacer que "Learn More" habra una pestaña de más datos del personaje
 
 //Hacer que el button de favoritos se cambie de icono cuando agregas a favoritos
-
-//Falta agregar datos como color de pelo o genero

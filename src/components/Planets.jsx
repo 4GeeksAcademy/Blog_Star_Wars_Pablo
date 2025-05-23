@@ -37,12 +37,12 @@ export const Planets = () => {
         <>
             <div>
                 <div>
-                    <h1 className="text-danger">Charanters</h1>
+                    <h1 className="text-danger">Planets</h1>
                 </div>
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {planets.map(planet => (
                     <div key={planet.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="https://mieducacionenlinea.com/wp-content/uploads/2024/09/Personajes-Iconicos-Universo-Star-Wars.webp" className="card-img-top" alt="..." />
+                    <img src="https://www.tendencias21.es/photo/art/grande/8030293-12502202.jpg?v=1437035337" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{planet.name}</h2>
                         
