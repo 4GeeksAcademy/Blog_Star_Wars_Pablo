@@ -17,22 +17,27 @@ export const People = () => {
             const response = await fetch("https://www.swapi.tech/api/people");
 
             if (!response.ok) {
-                throw new Error("We have not been able to recover the contacts"); //MODIFICAR
+                throw new Error("We have not been able to recover the characters");
             }
 
             const data = await response.json();
 
-            const formattedPeople = data.results.map(characters => ({
-                id: characters.id,
-                name: characters.name,
-                gender: characters.gender,
-                hairColor: characters.hairColor,
-                eyeColor: characters.eyeColor
+            const peopleDetails = await Promise. all (data.results.map(async (characters) => {
+                const detailRes = await fetch(characters.url);
+                const detailData = await detailRes.json();
+
+                return {
+                    id: detailData.result.uid,
+                    name: detailData.result.properties.name,
+                    gender: detailData.result.properties.gender,
+                    hairColor: detailData.result.properties.hair_color,
+                    eyeColor: detailData.result.properties.eye_color
+                };
             }));
 
-            setPeople(formattedPeople);
+            setPeople(peopleDetails);
         } catch (error) {
-            console.error("Error getting contacts", error.message); //MODIFICAR
+            console.error("Error getting characters", error.message);
         }
     };
     return (
@@ -58,14 +63,12 @@ export const People = () => {
                 </div>
                 ))}
                 </div>
-                
             </div>
         </>
     );
 };
 
 
-//Falta agregar datos como color de pelo o genero
 
 //Hacer que "Learn More" habra una pestaña de más datos del personaje
 

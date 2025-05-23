@@ -29,3 +29,5 @@ export const Home = () => {
 
 
 //Repartir todo en distintas carpetas
+
+//He notado que tarda en cargarse la pagina, nose si es muy pesada la API

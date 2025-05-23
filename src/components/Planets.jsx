@@ -45,7 +45,9 @@ export const Planets = () => {
                     <img src="https://www.tendencias21.es/photo/art/grande/8030293-12502202.jpg?v=1437035337" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{planet.name}</h2>
-                        
+                        <p>Diameter: {planet.diameter}</p>
+                        <p>Rotation Period: {planet.rotationPeriod}</p>
+                        <p>Terrain: {planet.terrain}</p>                        
                     </div>
                     <div className="m-2">
                         <button className="learnMore">Learn more!</button>

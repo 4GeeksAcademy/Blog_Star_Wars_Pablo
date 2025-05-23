@@ -46,6 +46,8 @@ export const Vehicles = () => {
                     <div className="card-body">
                         <h2>{vehicle.name}</h2>
                         <p>Model: {vehicle.model}</p>
+                        <p>Vehicle Class: {vehicle.vehicleClass}</p>
+                        <p>Manufacturer: {vehicle.manufacturer}</p>
                     </div>
                     <div className="m-2">
                         <button className="learnMore">Learn more!</button>
