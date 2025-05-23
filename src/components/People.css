@@ -1,0 +1,16 @@
+
+
+.learnMore {
+    border: blue solid;
+    border-radius: 5px;
+    background-color: transparent;
+    color: blue;
+    margin-right: 20px;
+}
+
+.favoriteButton {
+    border: red solid;
+    border-radius: 5px;
+    background-color: transparent;
+    color: red;
+}
