@@ -17,20 +17,27 @@ export const Planets = () => {
             const response = await fetch("https://www.swapi.tech/api/planets");
 
             if (!response.ok) {
-                throw new Error("We have not been able to recover the contacts"); //MODIFICAR
+                throw new Error("We have not been able to recover the planets");
             }
 
             const data = await response.json();
 
-            const formattedPlanets = data.results.map(planet => ({
-                id: planet.id,
-                name: planet.name,
+            const planetsDetails = await Promise. all (data.results.map(async (planet) => {
+                const detailRes = await fetch(planet.url);
+                const detailData = await detailRes.json();
 
+                return {
+                    id: detailData.result.uid,
+                    name: detailData.result.properties.name,
+                    diameter: detailData.result.properties.diameter,
+                    terrain: detailData.result.properties.terrain,
+                    rotationPeriod: detailData.result.properties.rotation_period
+                };
             }));
 
-            setPlanets(formattedPlanets);
+            setPlanets(planetsDetails);
         } catch (error) {
-            console.error("Error getting contacts", error.message); //MODIFICAR
+            console.error("Error getting planets", error.message);
         }
     };
     return (
@@ -45,9 +52,9 @@ export const Planets = () => {
                     <img src="https://www.tendencias21.es/photo/art/grande/8030293-12502202.jpg?v=1437035337" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{planet.name}</h2>
-                        <p>Diameter: {planet.diameter}</p>
-                        <p>Rotation Period: {planet.rotationPeriod}</p>
-                        <p>Terrain: {planet.terrain}</p>                        
+                        <p>Diameter: <span className="text-info">{planet.diameter}</span></p>
+                        <p>Rotation Period: <span className="text-info">{planet.rotationPeriod}</span></p>
+                        <p>Terrain: <span className="text-info">{planet.terrain}</span></p>                        
                     </div>
                     <div className="m-2">
                         <button className="learnMore">Learn more!</button>

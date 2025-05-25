@@ -52,9 +52,9 @@ export const People = () => {
                     <img src="https://mieducacionenlinea.com/wp-content/uploads/2024/09/Personajes-Iconicos-Universo-Star-Wars.webp" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{characters.name}</h2>
-                        <p>Gender: {characters.gender}</p>
-                        <p>Hair Color: {characters.hairColor}</p>
-                        <p>Eye-Color: {characters.eyeColor}</p>
+                        <p>Gender: <span className="text-info"> {characters.gender}</span></p>
+                        <p>Hair Color: <span className="text-info"> {characters.hairColor}</span></p>
+                        <p>Eye-Color: <span className="text-info"> {characters.eyeColor}</span></p>
                     </div>
                     <div className="m-2">
                         <button className="learnMore">Learn more!</button>
@@ -67,7 +67,6 @@ export const People = () => {
         </>
     );
 };
-
 
 
 //Hacer que "Learn More" habra una pestaña de más datos del personaje

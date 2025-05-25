@@ -16,21 +16,27 @@ export const Vehicles = () => {
             const response = await fetch("https://www.swapi.tech/api/vehicles");
 
             if (!response.ok) {
-                throw new Error("We have not been able to recover the contacts"); //MODIFICAR
+                throw new Error("We have not been able to recover the vehicles");
             }
 
             const data = await response.json();
 
-            const formattedVehicles = data.results.map(vehicle => ({
-                id: vehicle.id,
-                name: vehicle.name,
-                model: vehicle.model,
-                
+            const vehiclesDetails = await Promise. all (data.results.map(async (vehicle) => {
+                const detailRes = await fetch(vehicle.url);
+                const detailData = await detailRes.json();
+
+                return {
+                    id: detailData.result.uid,
+                    name: detailData.result.properties.name,
+                    model: detailData.result.properties.model,
+                    vehicleClass: detailData.result.properties.vehicle_class,
+                    manufacturer: detailData.result.properties.manufacturer
+                };
             }));
 
-            setVehicles(formattedVehicles);
+            setVehicles(vehiclesDetails);
         } catch (error) {
-            console.error("Error getting contacts", error.message); //MODIFICAR
+            console.error("Error getting vehicles", error.message);
         }
     };
     return (
@@ -45,9 +51,9 @@ export const Vehicles = () => {
                     <img src="https://img2.wikia.nocookie.net/__cb20080717171252/starwars/images/4/4c/ExecutorBattle-SWM.jpg" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{vehicle.name}</h2>
-                        <p>Model: {vehicle.model}</p>
-                        <p>Vehicle Class: {vehicle.vehicleClass}</p>
-                        <p>Manufacturer: {vehicle.manufacturer}</p>
+                        <p>Model: <span className="text-info">{vehicle.model}</span></p>
+                        <p>Vehicle Class: <span className="text-info">{vehicle.vehicleClass}</span></p>
+                        <p>Manufacturer: <span className="text-info">{vehicle.manufacturer}</span></p>
                     </div>
                     <div className="m-2">
                         <button className="learnMore">Learn more!</button>
@@ -61,6 +67,3 @@ export const Vehicles = () => {
         </>
     );
 };
-
-
-//Falta agregar datos como model o algo más

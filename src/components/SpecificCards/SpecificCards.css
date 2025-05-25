@@ -1,0 +1,16 @@
+
+
+.imgDimensions{
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+
+.datsZone {
+    border-top: 2px solid blue;
+    border-radius: 6px;
+    text-align: center;
+    margin-left: 40px;
+    color: blue;
+}
