@@ -27,6 +27,4 @@ export const Home = () => {
 
 
 
-//Repartir todo en distintas carpetas
-
-//He notado que tarda en cargarse la pagina, nose si es muy pesada la API
+//He notado que tarda en cargarse la pagina y a veces excesivamente, a veces carga Characters y vehicles si pero planets no o así con cualquiera de los 3

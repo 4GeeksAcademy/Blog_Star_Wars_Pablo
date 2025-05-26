@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Card.css"
 
 
@@ -6,6 +7,9 @@ import "./Card.css"
 export const People = () => {
 
     const [people, setPeople] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchPeople();
@@ -38,8 +42,13 @@ export const People = () => {
             setPeople(peopleDetails);
         } catch (error) {
             console.error("Error getting characters", error.message);
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    if (isLoading) return <h2 className="text-center">Loading Charanters...</h2>;
+    
     return (
         <>
             <div>
@@ -57,7 +66,7 @@ export const People = () => {
                         <p>Eye-Color: <span className="text-info"> {characters.eyeColor}</span></p>
                     </div>
                     <div className="m-2">
-                        <button className="learnMore">Learn more!</button>
+                        <button className="learnMore" onClick={() => navigate(`/peopledata/${characters.id}`)}>Learn more!</button>
                         <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
@@ -67,8 +76,5 @@ export const People = () => {
         </>
     );
 };
-
-
-//Hacer que "Learn More" habra una pestaña de más datos del personaje
 
 //Hacer que el button de favoritos se cambie de icono cuando agregas a favoritos

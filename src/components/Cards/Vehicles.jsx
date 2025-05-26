@@ -5,6 +5,7 @@ import "./Card.css"
 export const Vehicles = () => {
 
     const [vehicles, setVehicles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchVehicles();
@@ -37,8 +38,13 @@ export const Vehicles = () => {
             setVehicles(vehiclesDetails);
         } catch (error) {
             console.error("Error getting vehicles", error.message);
+        }finally {
+            setIsLoading(false);
         }
     };
+
+    if (isLoading) return <h2 className="text-center">Loading Vehicles...</h2>;
+
     return (
         <>
             <div>

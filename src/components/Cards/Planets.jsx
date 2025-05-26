@@ -6,6 +6,7 @@ import "./Card.css"
 export const Planets = () => {
 
     const [planets, setPlanets] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchPlanets();
@@ -38,8 +39,13 @@ export const Planets = () => {
             setPlanets(planetsDetails);
         } catch (error) {
             console.error("Error getting planets", error.message);
+        } finally {
+            setIsLoading(false);
         }
     };
+
+    if (isLoading) return <h2 className="text-center">Loading Planets...</h2>;
+
     return (
         <>
             <div>
