@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useGlobalReducer from "../../hooks/useGlobalReducer";
 import PeopleImg from "../../assets/img/PeopleImg.webp";
 import "./Card.css"
 
 
 
 export const People = () => {
-
     const [people, setPeople] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
+    const { store, dispatch } = useGlobalReducer();
 
     useEffect(() => {
         fetchPeople();
@@ -68,7 +69,9 @@ export const People = () => {
                     </div>
                     <div className="m-2">
                         <button className="learnMore" onClick={() => navigate(`/peopledata/${characters.id}`)}>Learn more!</button>
-                        <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
+                        <button className="favoriteButton" onClick={() => dispatch({ type: 'toggle_favorite', payload: characters.name })}>
+                            <i className={`fa-${store.favorites.includes(characters.name) ? "solid" : "regular"} fa-heart`}></i>
+                        </button>
                     </div>
                 </div>
                 ))}
@@ -77,5 +80,3 @@ export const People = () => {
         </>
     );
 };
-
-//Hacer que el button de favoritos se cambie de icono cuando agregas a favoritos

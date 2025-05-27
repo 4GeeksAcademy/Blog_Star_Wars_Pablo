@@ -74,6 +74,4 @@ export const PeopleData = () => {
     );
 };
 
-//Considerar agregar un <button> de favoritos
-
 //Como la API no tenia descripción separada de los personajes agregare una general, abierto a actualizaciones de API

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useGlobalReducer from "../../hooks/useGlobalReducer";
 import VehiclesImg from "../../assets/img/VehiclesImg.webp";
 import "./Card.css"
 
@@ -10,6 +11,7 @@ export const Vehicles = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
+    const { store, dispatch } = useGlobalReducer();
 
     useEffect(() => {
         fetchVehicles();
@@ -67,7 +69,9 @@ export const Vehicles = () => {
                     </div>
                     <div className="m-2">
                         <button className="learnMore" onClick={() => navigate(`/vehiclesdata/${vehicle.id}`)}>Learn more!</button>
-                        <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
+                        <button className="favoriteButton" onClick={() => dispatch({ type: 'toggle_favorite', payload: vehicle.name })}>
+                            <i className={`fa-${store.favorites.includes(vehicle.name) ? "solid" : "regular"} fa-heart`}></i>
+                        </button>
                     </div>
                 </div>
                 ))}

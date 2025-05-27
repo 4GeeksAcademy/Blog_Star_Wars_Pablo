@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useGlobalReducer from "../../hooks/useGlobalReducer";
 import PlanetsImg from "../../assets/img/PlanetsImg.jpg";
 import "./Card.css"
 
@@ -9,6 +10,7 @@ export const Planets = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
+    const { store, dispatch } = useGlobalReducer();
 
     useEffect(() => {
         fetchPlanets();
@@ -66,7 +68,9 @@ export const Planets = () => {
                     </div>
                     <div className="m-2">
                         <button className="learnMore" onClick={() => navigate(`/planetsdata/${planet.id}`)}>Learn more!</button>
-                        <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
+                        <button className="favoriteButton" onClick={() => dispatch({ type: 'toggle_favorite', payload: planet.name })}>
+                            <i className={`fa-${store.favorites.includes(planet.name) ? "solid" : "regular"} fa-heart`}></i>
+                        </button>
                     </div>
                 </div>
                 ))}
