@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Card.css"
 
 
@@ -7,6 +8,8 @@ export const Planets = () => {
 
     const [planets, setPlanets] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchPlanets();
@@ -55,7 +58,7 @@ export const Planets = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {planets.map(planet => (
                     <div key={planet.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="https://www.tendencias21.es/photo/art/grande/8030293-12502202.jpg?v=1437035337" className="card-img-top" alt="..." />
+                    <img src="" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{planet.name}</h2>
                         <p>Diameter: <span className="text-info">{planet.diameter}</span></p>
@@ -63,7 +66,7 @@ export const Planets = () => {
                         <p>Terrain: <span className="text-info">{planet.terrain}</span></p>                        
                     </div>
                     <div className="m-2">
-                        <button className="learnMore">Learn more!</button>
+                        <button className="learnMore" onClick={() => navigate(`/planetsdata/${planet.id}`)}>Learn more!</button>
                         <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
                     </div>
                 </div>

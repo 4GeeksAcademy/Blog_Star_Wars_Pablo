@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Card.css"
 
 
@@ -6,6 +7,8 @@ export const Vehicles = () => {
 
     const [vehicles, setVehicles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchVehicles();
@@ -54,7 +57,7 @@ export const Vehicles = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {vehicles.map(vehicle => (
                     <div key={vehicle.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="https://img2.wikia.nocookie.net/__cb20080717171252/starwars/images/4/4c/ExecutorBattle-SWM.jpg" className="card-img-top" alt="..." />
+                    <img src="" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{vehicle.name}</h2>
                         <p>Model: <span className="text-info">{vehicle.model}</span></p>
@@ -62,7 +65,7 @@ export const Vehicles = () => {
                         <p>Manufacturer: <span className="text-info">{vehicle.manufacturer}</span></p>
                     </div>
                     <div className="m-2">
-                        <button className="learnMore">Learn more!</button>
+                        <button className="learnMore" onClick={() => navigate(`/vehiclesdata/${vehicle.id}`)}>Learn more!</button>
                         <button className="favoriteButton"><i className="fa-regular fa-heart"></i></button>
                     </div>
                 </div>

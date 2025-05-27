@@ -58,7 +58,7 @@ export const People = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {people.map(characters => (
                     <div key={characters.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="https://mieducacionenlinea.com/wp-content/uploads/2024/09/Personajes-Iconicos-Universo-Star-Wars.webp" className="card-img-top" alt="..." />
+                    <img src="" className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{characters.name}</h2>
                         <p>Gender: <span className="text-info"> {characters.gender}</span></p>

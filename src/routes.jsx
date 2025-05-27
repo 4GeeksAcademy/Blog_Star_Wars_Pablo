@@ -18,8 +18,8 @@ export const router = createBrowserRouter(
         <Route path="/single/:theId" element={ <Single />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/peopledata/:id" element= {<PeopleData />} />
-        <Route path="/planetsdata" element= {<PlanetsData />} />
-        <Route path="/vehiclesdata" element= {<VehiclesData />} />
+        <Route path="/planetsdata/:id" element= {<PlanetsData />} />
+        <Route path="/vehiclesdata/:id" element= {<VehiclesData />} />
       </Route>
     )
 );

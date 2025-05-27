@@ -27,4 +27,4 @@ export const Home = () => {
 
 
 
-//He notado que tarda en cargarse la pagina y a veces excesivamente, a veces carga Characters y vehicles si pero planets no o así con cualquiera de los 3
+//He notado que tarda en cargarse la API y a veces excesivamente, a veces no carga alguna lista pero recargando llega a funcionar

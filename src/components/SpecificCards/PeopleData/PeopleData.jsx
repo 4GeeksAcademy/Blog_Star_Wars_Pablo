@@ -29,7 +29,7 @@ export const PeopleData = () => {
             <div className="bg-dark-subtle">
                 <div className="d-flex"> {/* IMG, Name and Description zone */}
                     <div className="m-5"> {/* IMG Zone*/}
-                        <img className="imgDimensions" src="https://mieducacionenlinea.com/wp-content/uploads/2024/09/Personajes-Iconicos-Universo-Star-Wars.webp" />
+                        <img className="imgDimensions" src="" />
                     </div>
                     <div className="m-5"> {/* Name and Description Zone*/}
                         <h1 className="text-danger">{character.name}</h1>
