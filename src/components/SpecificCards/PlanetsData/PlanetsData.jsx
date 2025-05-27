@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../SpecificCards.css"
+import PlanetsImg from "../../.././assets/img/PlanetsImg.jpg";
+import "../SpecificCards.css";
 
 
 export const PlanetsData = () => {
@@ -29,11 +30,17 @@ export const PlanetsData = () => {
             <div className="bg-dark-subtle">
                 <div className="d-flex"> {/* IMG, Name and Description zone */}
                     <div className="m-5"> {/* IMG Zone*/}
-                        <img className="imgDimensions" src="" />
+                        <img className="imgDimensions" src={PlanetsImg} />
                     </div>
                     <div className="m-5"> {/* Name and Description Zone*/}
                         <h1 className="text-danger">{planet.name}</h1>
-                        <p>INSERTAR DESCRIPCIÓN GENERAL</p>
+                        <p>
+                            <strong>
+                                A Planet from the Star Wars saga,<br />
+                                the API does not contain specific descriptions for each planet,<br />
+                                so I'll leave this space for possible future API updates.
+                            </strong>
+                        </p>
                     </div>
                 </div>
                 <div className="datsZone container row"> {/* Specific Datas */}

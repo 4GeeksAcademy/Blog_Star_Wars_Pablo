@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PeopleImg from "../../assets/img/PeopleImg.webp";
 import "./Card.css"
 
 
@@ -58,7 +59,7 @@ export const People = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {people.map(characters => (
                     <div key={characters.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="" className="card-img-top" alt="..." />
+                    <img src={PeopleImg} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{characters.name}</h2>
                         <p>Gender: <span className="text-info"> {characters.gender}</span></p>

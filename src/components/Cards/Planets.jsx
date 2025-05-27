@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PlanetsImg from "../../assets/img/PlanetsImg.jpg";
 import "./Card.css"
-
-
 
 export const Planets = () => {
 
@@ -58,7 +57,7 @@ export const Planets = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {planets.map(planet => (
                     <div key={planet.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="" className="card-img-top" alt="..." />
+                    <img src={PlanetsImg} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{planet.name}</h2>
                         <p>Diameter: <span className="text-info">{planet.diameter}</span></p>

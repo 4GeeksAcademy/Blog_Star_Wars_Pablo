@@ -1,4 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { FavoritesZone } from "./FavoritesZone";
 import "./Navbar.css"
 
 export const Navbar = () => {
@@ -16,7 +18,7 @@ export const Navbar = () => {
 				</button>
 				<div class="offcanvas offcanvas-end text-bg-dark" id="offcanvasDarkNavbar">
 					<div> {/*Zona de favoritos */}
-
+						< FavoritesZone />
 					</div>
 				</div>
 			</div>

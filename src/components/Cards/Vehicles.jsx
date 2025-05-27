@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import VehiclesImg from "../../assets/img/VehiclesImg.webp";
 import "./Card.css"
 
 
@@ -57,7 +58,7 @@ export const Vehicles = () => {
                 <div className="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
                 {vehicles.map(vehicle => (
                     <div key={vehicle.id} className="card" style={{ width: "18rem", flex: "0 0 auto" }}>
-                    <img src="" className="card-img-top" alt="..." />
+                    <img src={VehiclesImg} className="card-img-top" alt="..." />
                     <div className="card-body">
                         <h2>{vehicle.name}</h2>
                         <p>Model: <span className="text-info">{vehicle.model}</span></p>
